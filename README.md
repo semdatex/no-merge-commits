@@ -1,4 +1,4 @@
-# No Merge Commits Action
+# ![git-merge](.github/git-merge.svg) No Merge Commits Action
 
 A Github Action to detect merge commits in pull requests and to prevent them from being merged.
 
