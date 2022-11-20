@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, jest, test } from '@jest/globals'
+import { color, inflect, log } from '../src/util'
 import { EOL } from 'os'
-import { color, log, inflect } from '../src/util'
 
 describe('nexusphp/no-merge-commits util', () => {
   beforeEach(() => {

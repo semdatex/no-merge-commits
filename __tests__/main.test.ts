@@ -1,7 +1,7 @@
-import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 import * as github from '@actions/github'
-import { runner } from '../src/runner'
+import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 import { EOL } from 'os'
+import { runner } from '../src/runner'
 
 describe('nexusphp/no-merge-commits main', () => {
   beforeEach(() => {
@@ -45,7 +45,7 @@ describe('nexusphp/no-merge-commits main', () => {
 
   it('fails when status code is not HTTP 200', async () => {
     jest.spyOn(github, 'getOctokit').mockImplementation(
-      jest.fn<ReturnType<any>>((token: string) => {
+      jest.fn<ReturnType<any>>(() => {
         return {
           rest: {
             pulls: {
@@ -77,7 +77,7 @@ describe('nexusphp/no-merge-commits main', () => {
 
   it('succeeds checking no merge commits', async () => {
     jest.spyOn(github, 'getOctokit').mockImplementation(
-      jest.fn<ReturnType<any>>((token: string) => {
+      jest.fn<ReturnType<any>>(() => {
         return {
           rest: {
             pulls: {
@@ -124,7 +124,7 @@ describe('nexusphp/no-merge-commits main', () => {
 
   it('fails when a merge commit is detected', async () => {
     jest.spyOn(github, 'getOctokit').mockImplementation(
-      jest.fn<ReturnType<any>>((token: string) => {
+      jest.fn<ReturnType<any>>(() => {
         return {
           rest: {
             pulls: {
