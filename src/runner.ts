@@ -16,7 +16,7 @@ export async function runner(): Promise<void> {
   log(`Looking up repository: ${repo}`, 'notice')
   log(`Looking up pull request number: ${number}`, 'notice')
 
-  log(`Retrieving commits of [PR #${number}](https://github.com/${owner}/${repo}/pulls/${number})...`, 'notice')
+  log(`Retrieving commits of [PR #${number}](https://github.com/${owner}/${repo}/pull/${number})...`, 'notice')
   const { data: commits, status } = await client.rest.pulls.listCommits({
     ...context.repo,
     pull_number: context.issue.number,
