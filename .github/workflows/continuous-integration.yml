@@ -55,8 +55,8 @@ jobs:
 
       - name: Always build latest distributable
         run: |
-          npm build
-          npm package
+          npm run build
+          npm run package
 
       - name: Run on PR
         uses: ./
