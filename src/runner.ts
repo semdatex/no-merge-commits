@@ -34,10 +34,12 @@ export async function runner(): Promise<void> {
   let mergeCommits = 0
 
   for (const { sha, html_url, parents } of commits) {
-    log(`Inspecting commit SHA: ${sha}`, 'notice')
+    const shortSha = sha.substring(0, 7)
+
+    log(`Inspecting commit SHA: ${shortSha}`, 'notice')
 
     if (parents.length > 1) {
-      log(`Commit SHA ${await linkify(sha, html_url)} is a merge commit!`, 'error')
+      log(`Commit SHA ${await linkify(shortSha, html_url)} is a merge commit!`, 'error')
 
       mergeCommits++
     }

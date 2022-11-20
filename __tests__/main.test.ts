@@ -85,11 +85,11 @@ describe('nexusphp/no-merge-commits main', () => {
                 return {
                   data: [
                     {
-                      sha: '447553',
+                      sha: '819a33b1698acae12d7d8ae9a9b9d2bcb70246b2',
                       html_url: 'https://some.place',
                       parents: [
                         {
-                          sha: '16c886',
+                          sha: 'a6bb65ad37fe4fda1e1dfe2d5beeae91ead50bfe',
                           url: 'https://api.some.place',
                           html_url: 'https://some.place',
                         },
@@ -117,7 +117,7 @@ describe('nexusphp/no-merge-commits main', () => {
       '\x1B[37m[NOTICE] Looking up pull request number: 1\x1B[0m',
       '\x1B[37m[NOTICE] Retrieving commits of \x1B]8;;https://github.com/me/awesome/pull/1\x1B\\PR #1\x1B]8;;\x1B\\...\x1B[0m',
       '\x1B[32m[INFO] PR #1 contains 1 commit.\x1B[0m',
-      '\x1B[37m[NOTICE] Inspecting commit SHA: 447553\x1B[0m',
+      '\x1B[37m[NOTICE] Inspecting commit SHA: 819a33b\x1B[0m',
       '\x1B[32m[INFO] No merge commits found in this pull request.\x1B[0m',
     ])
   })
@@ -132,16 +132,16 @@ describe('nexusphp/no-merge-commits main', () => {
                 return {
                   data: [
                     {
-                      sha: '447553',
+                      sha: '819a33b1698acae12d7d8ae9a9b9d2bcb70246b2',
                       html_url: 'https://some.place',
                       parents: [
                         {
-                          sha: '16c886',
+                          sha: 'a6bb65ad37fe4fda1e1dfe2d5beeae91ead50bfe',
                           url: 'https://api.some.place',
                           html_url: 'https://some.place',
                         },
                         {
-                          sha: '17adfe',
+                          sha: 'c75b41ded1540564f1b9340acf5c909288a3b466',
                           url: 'https://api.some.place',
                           html_url: 'https://some.place',
                         },
@@ -169,8 +169,8 @@ describe('nexusphp/no-merge-commits main', () => {
       '\x1B[37m[NOTICE] Looking up pull request number: 1\x1B[0m',
       '\x1B[37m[NOTICE] Retrieving commits of \x1B]8;;https://github.com/me/awesome/pull/1\x1B\\PR #1\x1B]8;;\x1B\\...\x1B[0m',
       '\x1B[32m[INFO] PR #1 contains 1 commit.\x1B[0m',
-      '\x1B[37m[NOTICE] Inspecting commit SHA: 447553\x1B[0m',
-      '\x1B[31m[ERROR] Commit SHA \x1B]8;;https://some.place\x1B\\447553\x1B]8;;\x1B\\ is a merge commit!\x1B[0m',
+      '\x1B[37m[NOTICE] Inspecting commit SHA: 819a33b\x1B[0m',
+      '\x1B[31m[ERROR] Commit SHA \x1B]8;;https://some.place\x1B\\819a33b\x1B]8;;\x1B\\ is a merge commit!\x1B[0m',
     ])
   })
 })
