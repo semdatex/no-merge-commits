@@ -44,8 +44,8 @@ jobs:
       - name: Run all suites
         run: npm run all
 
-  test-run:
-    name: Run Live Test
+  live-test:
+    name: Live Test
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-22.04
 
