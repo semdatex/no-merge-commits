@@ -73,7 +73,7 @@ jobs:
         if: ${{ failure() && steps.diff.conclusion == 'failure' }}
         uses: peter-evans/create-pull-request@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ACCESS_TOKEN }}
           commit-message: Update build in dist
           author: John Paul E. Balandan, CPA <paulbalandan@gmail.com>
           committer: John Paul E. Balandan, CPA <paulbalandan@gmail.com>
