@@ -70,13 +70,13 @@ jobs:
         id: committer
 
       - name: Create pull request if updated version is different
-        if: ${{ steps.diff.conclusion == 'failure' }}
+        if: ${{ failure() && steps.diff.conclusion == 'failure' }}
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Update build in dist
           author: John Paul E. Balandan, CPA <paulbalandan@gmail.com>
-          committer: ${{ steps.committer.outputs.name }} <${{ steps.committer.outputs.email }}>
+          committer: John Paul E. Balandan, CPA <paulbalandan@gmail.com>
           branch: update-build-dist
           delete-branch: true
           base: 1.x
