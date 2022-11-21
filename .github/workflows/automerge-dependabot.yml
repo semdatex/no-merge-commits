@@ -2,20 +2,21 @@ name: Auto-Merge Dependabot Updates
 
 on:
   pull_request:
-    types:
-      - opened
-      - synchronize
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   automerge:
     name: Enable Auto-Merge for Dependabot
-    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.actor == 'dependabot[bot]'
     runs-on: ubuntu-22.04
 
     steps:
       - name: Enable auto-merge
         uses: peter-evans/enable-pull-request-automerge@v2
         with:
-          token: ${{ secrets.ACCESS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-number: ${{ github.event.pull_request.number }}
           merge-method: squash
