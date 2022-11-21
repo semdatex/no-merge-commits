@@ -1,4 +1,4 @@
-import { info } from '@actions/core'
+import * as core from '@actions/core'
 
 export async function color(type: string): Promise<string> {
   switch (type) {
@@ -8,6 +8,7 @@ export async function color(type: string): Promise<string> {
     case 'warning':
       return '\x1B[33m'
 
+    case 'debug':
     case 'notice':
       return '\x1B[37m'
 
@@ -21,7 +22,27 @@ export async function color(type: string): Promise<string> {
 }
 
 export async function log(message: string, type: string): Promise<void> {
-  info(`${await color(type)}[${type.toUpperCase()}] ${message}${await color('reset')}`)
+  let callable
+
+  switch (type) {
+    case 'debug':
+      callable = core.debug
+      break
+
+    case 'notice':
+      callable = core.notice
+      break
+
+    case 'error':
+      callable = core.error
+      break
+
+    case 'info':
+    default:
+      callable = core.info
+  }
+
+  callable(`${await color(type)}[${type.toUpperCase()}] ${message}${await color('reset')}`)
 }
 
 export async function inflect(iterable: any[], singular: string, plural: string): Promise<string> {

@@ -12,9 +12,9 @@ export async function runner(): Promise<void> {
   log('Octokit client is ready.', 'info')
 
   const { owner, repo, number } = context.issue
-  log(`Looking up owner: ${owner}`, 'notice')
-  log(`Looking up repository: ${repo}`, 'notice')
-  log(`Looking up pull request number: ${number}`, 'notice')
+  log(`Looking up owner: ${owner}`, 'debug')
+  log(`Looking up repository: ${repo}`, 'debug')
+  log(`Looking up pull request number: ${number}`, 'debug')
 
   log(`Retrieving commits of PR #${number}...`, 'notice')
 
