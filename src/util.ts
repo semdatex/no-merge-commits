@@ -29,14 +29,11 @@ export async function log(message: string, type: string): Promise<void> {
       callable = core.debug
       break
 
-    case 'notice':
-      callable = core.notice
-      break
-
     case 'error':
       callable = core.error
       break
 
+    case 'notice':
     case 'info':
     default:
       callable = core.info

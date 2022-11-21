@@ -40,7 +40,7 @@ describe('nexusphp/no-merge-commits main', () => {
     process.env['INPUT_TOKEN'] = ''
 
     await expect(runner()).rejects.toThrowError('Input required and not supplied: token')
-    assertWritten(['::notice::\x1B[37m[NOTICE] Collecting token from input...\x1B[0m'])
+    assertWritten(['\x1B[37m[NOTICE] Collecting token from input...\x1B[0m'])
   })
 
   it('fails when status code is not HTTP 200', async () => {
@@ -64,14 +64,14 @@ describe('nexusphp/no-merge-commits main', () => {
     await expect(runner()).rejects.toThrowError('Retrieving the commits of the pull request failed with HTTP 422 status code.')
 
     assertWritten([
-      '::notice::\x1B[37m[NOTICE] Collecting token from input...\x1B[0m',
+      '\x1B[37m[NOTICE] Collecting token from input...\x1B[0m',
       '\x1B[32m[INFO] Token collected.\x1B[0m',
-      '::notice::\x1B[37m[NOTICE] Instantiating an Octokit client using token...\x1B[0m',
+      '\x1B[37m[NOTICE] Instantiating an Octokit client using token...\x1B[0m',
       '\x1B[32m[INFO] Octokit client is ready.\x1B[0m',
       '::debug::\x1B[37m[DEBUG] Looking up owner: me\x1B[0m',
       '::debug::\x1B[37m[DEBUG] Looking up repository: awesome\x1B[0m',
       '::debug::\x1B[37m[DEBUG] Looking up pull request number: 1\x1B[0m',
-      '::notice::\x1B[37m[NOTICE] Retrieving commits of PR #1...\x1B[0m',
+      '\x1B[37m[NOTICE] Retrieving commits of PR #1...\x1B[0m',
     ])
   })
 
@@ -108,16 +108,16 @@ describe('nexusphp/no-merge-commits main', () => {
     await expect(runner()).resolves.toBeUndefined()
 
     assertWritten([
-      '::notice::\x1B[37m[NOTICE] Collecting token from input...\x1B[0m',
+      '\x1B[37m[NOTICE] Collecting token from input...\x1B[0m',
       '\x1B[32m[INFO] Token collected.\x1B[0m',
-      '::notice::\x1B[37m[NOTICE] Instantiating an Octokit client using token...\x1B[0m',
+      '\x1B[37m[NOTICE] Instantiating an Octokit client using token...\x1B[0m',
       '\x1B[32m[INFO] Octokit client is ready.\x1B[0m',
       '::debug::\x1B[37m[DEBUG] Looking up owner: me\x1B[0m',
       '::debug::\x1B[37m[DEBUG] Looking up repository: awesome\x1B[0m',
       '::debug::\x1B[37m[DEBUG] Looking up pull request number: 1\x1B[0m',
-      '::notice::\x1B[37m[NOTICE] Retrieving commits of PR #1...\x1B[0m',
+      '\x1B[37m[NOTICE] Retrieving commits of PR #1...\x1B[0m',
       '\x1B[32m[INFO] PR #1 contains 1 commit.\x1B[0m',
-      '::notice::\x1B[37m[NOTICE] Inspecting commit SHA: 819a33b\x1B[0m',
+      '\x1B[37m[NOTICE] Inspecting commit SHA: 819a33b\x1B[0m',
       '\x1B[32m[INFO] No merge commits found in this pull request.\x1B[0m',
     ])
   })
@@ -160,16 +160,16 @@ describe('nexusphp/no-merge-commits main', () => {
     await expect(runner()).rejects.toThrowError('Merge commits were found in this pull request.')
 
     assertWritten([
-      '::notice::\x1B[37m[NOTICE] Collecting token from input...\x1B[0m',
+      '\x1B[37m[NOTICE] Collecting token from input...\x1B[0m',
       '\x1B[32m[INFO] Token collected.\x1B[0m',
-      '::notice::\x1B[37m[NOTICE] Instantiating an Octokit client using token...\x1B[0m',
+      '\x1B[37m[NOTICE] Instantiating an Octokit client using token...\x1B[0m',
       '\x1B[32m[INFO] Octokit client is ready.\x1B[0m',
       '::debug::\x1B[37m[DEBUG] Looking up owner: me\x1B[0m',
       '::debug::\x1B[37m[DEBUG] Looking up repository: awesome\x1B[0m',
       '::debug::\x1B[37m[DEBUG] Looking up pull request number: 1\x1B[0m',
-      '::notice::\x1B[37m[NOTICE] Retrieving commits of PR #1...\x1B[0m',
+      '\x1B[37m[NOTICE] Retrieving commits of PR #1...\x1B[0m',
       '\x1B[32m[INFO] PR #1 contains 1 commit.\x1B[0m',
-      '::notice::\x1B[37m[NOTICE] Inspecting commit SHA: 819a33b\x1B[0m',
+      '\x1B[37m[NOTICE] Inspecting commit SHA: 819a33b\x1B[0m',
       '::error::\x1B[31m[ERROR] Commit SHA 819a33b is a merge commit!\x1B[0m',
     ])
   })
