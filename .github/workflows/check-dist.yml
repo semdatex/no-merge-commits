@@ -52,14 +52,15 @@ jobs:
       - name: Compare the expected and actual dist/ directories
         run: |
           if [[ -n "$(git status --porcelain 2>/dev/null)" ]]; then
+            echo "DIFF=true" >> $GITHUB_OUTPUT
+
             echo "Detected uncommitted changes after build. See status below:"
             git diff --text --ignore-space-at-eol
-            exit 1
           fi
         id: diff
 
       - name: Import GPG signing information
-        if: ${{ failure() && steps.diff.conclusion == 'failure' }}
+        if: steps.diff.outputs.DIFF == 'true'
         uses: crazy-max/ghaction-import-gpg@v5
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
@@ -70,11 +71,11 @@ jobs:
         id: committer
 
       - name: Create pull request if updated version is different
-        if: ${{ failure() && steps.diff.conclusion == 'failure' }}
+        if: steps.diff.outputs.DIFF == 'true'
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-          commit-message: Update build in dist
+          commit-message: Update rebuilt distributable
           author: John Paul E. Balandan, CPA <paulbalandan@gmail.com>
           committer: John Paul E. Balandan, CPA <paulbalandan@gmail.com>
           branch: update-build-dist
